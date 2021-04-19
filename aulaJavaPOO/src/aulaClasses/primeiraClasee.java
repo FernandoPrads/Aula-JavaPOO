@@ -11,7 +11,8 @@ public class primeiraClasee {
 		/* new Aluno() é uma instancia (criação de Objetos) */
 		/* aluno1 é uma referencia para o objeto aluno */
 		
-		String nome1 = JOptionPane.showInputDialog("Qual o seu nome?");
+		/*entrada de dados pelo teclado*/
+		/*String nome1 = JOptionPane.showInputDialog("Qual o seu nome?");
 		String idade1 = JOptionPane.showInputDialog("Qual a sua idade?");
 		String dataNascimento1 = JOptionPane.showInputDialog("Qual a data de nascimento?");
 		
@@ -34,26 +35,24 @@ public class primeiraClasee {
 		aluno1.setNota3(70.9);
 		aluno1.setNota4(90.7);
 		
+		
+		
 		System.out.println(aluno1); /*Descrição do objeto na memoria*/
 	
 
-		System.out.println("Nome é: " + aluno1.getNome());
+   		/*System.out.println("Nome é: " + aluno1.getNome());
 		System.out.println("Idade é: " + aluno1.getIdade());
 		System.out.println("Nascido em: " + aluno1.getDataNascimento());
 		System.out.println("A média da nota é: " + aluno1.getMediaNota());
 		System.out.println("Resultado: " + (aluno1.getAlunoAprovado() ? "Aprovado" : "Reprovado"));
 		/*-----------------------------------------------------------------------------------------*/
 		System.out.println("----------------------------------------------------------------");
-
-		/*String idade2 = JOptionPane.showInputDialog("Qual a sua idade?");
-		String nome2 = JOptionPane.showInputDialog("Qual o seu nome?");
-		String dataNascimento2 = JOptionPane.showInputDialog("Qual a data de nascimento?");
 		
 		Aluno aluno2 = new Aluno();
 		aluno2.setDataMatricula("30/05/2020");
-		aluno2.setDataNascimento(dataNascimento2);
-		aluno2.setIdade(Integer.valueOf(idade2));
-		aluno2.setNome(nome2);
+		aluno2.setDataNascimento("29/12/2017");
+		aluno2.setIdade(3);
+		aluno2.setNome("Noah");
 		aluno2.setNomeEscola("Casa");
 		aluno2.setNomeMae("Barbara");
 		aluno2.setNomePai("Fernando");
@@ -71,21 +70,18 @@ public class primeiraClasee {
 		System.out.println("A média da nota é: " + aluno2.getMediaNota());
 		System.out.println("Resultado: " + (aluno2.getAlunoAprovado() ? "Aprovado" : "Reprovado"));
 		/*-----------------------------------------------------------------------------------------*/
-		/*System.out.println("----------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------");
 
-		String idade3 = JOptionPane.showInputDialog("Qual a sua idade?");
-		String nome3 = JOptionPane.showInputDialog("Qual o seu nome?");
-		String dataNascimento3 = JOptionPane.showInputDialog("Qual a data de nascimento?");
 		
 		Aluno aluno3 = new Aluno();
 		aluno3.setDataMatricula("15/04/2021");
-		aluno3.setDataNascimento(dataNascimento3);
-		aluno3.setIdade(Integer.valueOf(idade3));
-		aluno3.setNome(nome3);
+		aluno3.setDataNascimento("02/08/1988");
+		aluno3.setIdade(33);
+		aluno3.setNome("Barbara");
 		aluno3.setNomeEscola("Casa");
 		aluno3.setNomeMae("Aurea");
 		aluno3.setNomePai("Luiz");
-		aluno3.setNumeroCpf("362.895.478.69");
+		aluno3.setNumeroCpf("333.276.333.95");
 		aluno3.setRegistroGeral("6549");
 		aluno3.setSerieMatriculado("3o ano");
 		aluno3.setNota1(90);
@@ -99,17 +95,13 @@ public class primeiraClasee {
 		System.out.println("A média da nota é: " + aluno3.getMediaNota());
 		System.out.println("Resultado: " + (aluno3.getAlunoAprovado() ? "Aprovado" : "Reprovado"));
 		/*-----------------------------------------------------------------------------------------*/
-		/*System.out.println("----------------------------------------------------------------");
-
-		String idade4 = JOptionPane.showInputDialog("Qual a sua idade?");
-		String nome4 = JOptionPane.showInputDialog("Qual o seu nome?");
-		String dataNascimento4 = JOptionPane.showInputDialog("Qual a data de nascimento?");
-		
+		System.out.println("----------------------------------------------------------------");
+	
 		Aluno aluno4 = new Aluno();
 		aluno4.setDataMatricula("30/05/2020");
-		aluno4.setDataNascimento(dataNascimento4);
-		aluno4.setIdade(Integer.valueOf(idade4));
-		aluno4.setNome(nome4);
+		aluno4.setDataNascimento("13/03/1983");
+		aluno4.setIdade(38);
+		aluno4.setNome("Fernando");
 		aluno4.setNomeEscola("Uninove");
 		aluno4.setNomeMae("Cosima");
 		aluno4.setNomePai("Luiz");
@@ -127,8 +119,17 @@ public class primeiraClasee {
 		System.out.println("A média da nota é: " + aluno4.getMediaNota());
 		System.out.println("Resultado: " + (aluno4.getAlunoAprovado() ? "Aprovado" : "Reprovado"));
 		/*-----------------------------------------------------------------------------------------*/
-		/*System.out.println("----------------------------------------------------------------");*/
-
+		System.out.println("----------------------------------------------------------------");
+		
+/*EQUALS and HASHCODE (Diferenciar e comparar objetos)*/
+	if (aluno2.equals(aluno3)) {
+		System.out.println("Alunos são iguais");
+	}else {
+		System.out.println("Alunos não são iguais");
 	}
-
+		
+	}
+	
+	
+	
 }
