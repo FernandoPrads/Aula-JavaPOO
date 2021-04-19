@@ -1,9 +1,9 @@
 package aulaClasses;
 
 public class Aluno {
-	
-	/*Esses são os atributos do aluno*/
-	
+
+	/* Esses são os atributos do aluno */
+
 	private String nome;
 	private int idade;
 	private String dataNascimento;
@@ -14,25 +14,24 @@ public class Aluno {
 	private String dataMatricula;
 	private String nomeEscola;
 	private String serieMatriculado;
-	
+
 	private double nota1;
 	private double nota2;
 	private double nota3;
 	private double nota4;
-	
+
 	public Aluno() {
-		
+
 	}
-	
-	public Aluno (String nomePadrao) {
+
+	public Aluno(String nomePadrao) {
 		nome = nomePadrao;
 	}
-	
 
-	/*Veremos os metodos SETTERS e GETTERS do objeto */
-	/*SET é para adicionar ou receber dados para os atributos*/
-	/*GET é para resgatra ou obter o valor do atributo*/
-	
+	/* Veremos os metodos SETTERS e GETTERS do objeto */
+	/* SET é para adicionar ou receber dados para os atributos */
+	/* GET é para resgatra ou obter o valor do atributo */
+
 	public String getNome() {
 		return nome;
 	}
@@ -144,14 +143,30 @@ public class Aluno {
 	public void setNota4(double nota4) {
 		this.nota4 = nota4;
 	}
-	
-	
-	public double getMediaNota() {
-		return(nota1 + nota2 + nota3 + nota4)/4;
-	}
-	
-	
-	
-	}
-	
 
+	/* Método que retorna a média da nota */
+	public double getMediaNota() {
+		return (nota1 + nota2 + nota3 + nota4) / 4;
+	}
+
+	/* Método que retorna true(Aprovado) e false (Reprovado) */
+	public boolean getAlunoAprovado() {
+		double media = this.getMediaNota();
+		if (media >= 70) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public String toString() {
+		return "Aluno [nome=" + this.nome+ ", idade=" + this.idade + ", dataNascimento=" + this.dataNascimento + ", registroGeral="
+				+ registroGeral + ", numeroCpf=" + numeroCpf + ", nomeMae=" + nomeMae + ", nomePai=" + nomePai
+				+ ", dataMatricula=" + dataMatricula + ", nomeEscola=" + nomeEscola + ", serieMatriculado="
+				+ serieMatriculado + ", nota1=" + nota1 + ", nota2=" + nota2 + ", nota3=" + nota3 + ", nota4=" + nota4
+				+ "]";
+	}
+
+
+}
