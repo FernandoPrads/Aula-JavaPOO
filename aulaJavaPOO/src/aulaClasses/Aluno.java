@@ -1,5 +1,8 @@
 package aulaClasses;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Aluno {
 
 	/* Esses são os atributos do aluno */
@@ -15,13 +18,14 @@ public class Aluno {
 	private String nomeEscola;
 	private String serieMatriculado;
 	
-	private Disciplina disciplina = new Disciplina();
+	private List< Disciplina> disciplinas = new ArrayList<Disciplina>();
 
-	public void setDisciplina(Disciplina disciplina) {
-		this.disciplina = disciplina;
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
 	}
-	public Disciplina getDisciplina() {
-		return disciplina;
+	
+	public List<Disciplina> getDisciplinas() {
+		return disciplinas;
 	}
 	
 
@@ -119,8 +123,13 @@ public class Aluno {
 
 	/* Método que retorna a média da nota */
 	public double getMediaNota() {
-		return (disciplina.getNota1() + disciplina.getNota2()
-		+ disciplina.getNota3()+ disciplina.getNota4()) / 4;
+		double somaNotas = 0.0;
+		for (Disciplina disciplina : disciplinas) {
+			somaNotas += disciplina.getNota();
+		}
+		
+		
+		return somaNotas / disciplinas.size();
 	}
 
 	/* Método que retorna true(Aprovado) e false (Reprovado) */
@@ -133,8 +142,16 @@ public class Aluno {
 		}
 	}
 
+	
 
 	
+	@Override
+	public String toString() {
+		return "Aluno [nome=" + nome + ", idade=" + idade + ", dataNascimento=" + dataNascimento + ", registroGeral="
+				+ registroGeral + ", numeroCpf=" + numeroCpf + ", nomeMae=" + nomeMae + ", nomePai=" + nomePai
+				+ ", dataMatricula=" + dataMatricula + ", nomeEscola=" + nomeEscola + ", serieMatriculado="
+				+ serieMatriculado + ", disciplinas=" + disciplinas + "]";
+	}
 
 	@Override
 	public int hashCode() {
