@@ -37,7 +37,7 @@ public class primeiraClasee {
 		aluno1.setRegistroGeral(rg);
 		aluno1.setSerieMatriculado(matricula);
 		
-		
+		/*para adicionar disciplinas*/
 		for (int pos = 1; pos <=4; pos++) {
 			String nomeDisciplina = JOptionPane.showInputDialog("Nome da disciplina "+pos+" ?");
 			String notaDisciplina = JOptionPane.showInputDialog("Nota do disciplina "+pos+" ?");
@@ -48,6 +48,15 @@ public class primeiraClasee {
 			
 			aluno1.getDisciplinas().add(disciplina);
 		}
+		
+		/*para remover disciplinas*/
+		int escolha = JOptionPane.showConfirmDialog(null,"Deseja remover alguma disciplina?");
+		
+		if (escolha == 0) {
+			String disciplinaRemover = JOptionPane.showInputDialog("Qual a disciplina 1, 2, 3, 4 ?");
+			aluno1.getDisciplinas().remove(Integer.valueOf(disciplinaRemover).intValue());
+		}
+		
 		
 		System.out.println(aluno1); /*Descrição do objeto na memoria*/
    		System.out.println("Nome é: " + aluno1.getNome());
