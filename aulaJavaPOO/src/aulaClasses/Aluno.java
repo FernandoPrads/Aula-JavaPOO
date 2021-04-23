@@ -17,19 +17,18 @@ public class Aluno {
 	private String dataMatricula;
 	private String nomeEscola;
 	private String serieMatriculado;
-	
-	private List< Disciplina> disciplinas = new ArrayList<Disciplina>();
+
+	private List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 
 	public void setDisciplinas(List<Disciplina> disciplinas) {
 		this.disciplinas = disciplinas;
 	}
-	
+
 	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
 	}
-	
 
-	public Aluno() { /*Cria os dados na memória Sendo padrão Java*/
+	public Aluno() { /* Cria os dados na memória Sendo padrão Java */
 
 	}
 
@@ -127,24 +126,33 @@ public class Aluno {
 		for (Disciplina disciplina : disciplinas) {
 			somaNotas += disciplina.getNota();
 		}
-		
-		
+
 		return somaNotas / disciplinas.size();
+	}
+
+	public String getAlunoAprovado2() {
+		double media = this.getMediaNota();
+		if (media >= 50) {
+			if (media >= 70) {
+				return "Aluno está aprovado";
+			} else {
+				return "Aluno em recuperação";
+			}
+		} else {
+			return "Aluno está reprovado";
+		}
 	}
 
 	/* Método que retorna true(Aprovado) e false (Reprovado) */
 	public boolean getAlunoAprovado() {
 		double media = this.getMediaNota();
 		if (media >= 70) {
-			return true;
+			return true;/* Aprovado */
 		} else {
-			return false;
+			return false;/* reprovado */
 		}
 	}
 
-	
-
-	
 	@Override
 	public String toString() {
 		return "Aluno [nome=" + nome + ", idade=" + idade + ", dataNascimento=" + dataNascimento + ", registroGeral="
@@ -177,9 +185,5 @@ public class Aluno {
 			return false;
 		return true;
 	}
-
-	
-
-	
 
 }
