@@ -14,13 +14,18 @@ public class Aluno {
 	private String dataMatricula;
 	private String nomeEscola;
 	private String serieMatriculado;
+	
+	private Disciplina disciplina = new Disciplina();
 
-	private double nota1;
-	private double nota2;
-	private double nota3;
-	private double nota4;
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
+	}
+	public Disciplina getDisciplina() {
+		return disciplina;
+	}
+	
 
-	public Aluno() {
+	public Aluno() { /*Cria os dados na memória Sendo padrão Java*/
 
 	}
 
@@ -112,41 +117,10 @@ public class Aluno {
 		this.serieMatriculado = serieMatriculado;
 	}
 
-	public double getNota1() {
-		return nota1;
-	}
-
-	public void setNota1(double nota1) {
-		this.nota1 = nota1;
-	}
-
-	public double getNota2() {
-		return nota2;
-	}
-
-	public void setNota2(double nota2) {
-		this.nota2 = nota2;
-	}
-
-	public double getNota3() {
-		return nota3;
-	}
-
-	public void setNota3(double nota3) {
-		this.nota3 = nota3;
-	}
-
-	public double getNota4() {
-		return nota4;
-	}
-
-	public void setNota4(double nota4) {
-		this.nota4 = nota4;
-	}
-
 	/* Método que retorna a média da nota */
 	public double getMediaNota() {
-		return (nota1 + nota2 + nota3 + nota4) / 4;
+		return (disciplina.getNota1() + disciplina.getNota2()
+		+ disciplina.getNota3()+ disciplina.getNota4()) / 4;
 	}
 
 	/* Método que retorna true(Aprovado) e false (Reprovado) */
@@ -159,14 +133,8 @@ public class Aluno {
 		}
 	}
 
-	@Override
-	public String toString() {
-		return "Aluno [nome=" + this.nome+ ", idade=" + this.idade + ", dataNascimento=" + this.dataNascimento + ", registroGeral="
-				+ registroGeral + ", numeroCpf=" + numeroCpf + ", nomeMae=" + nomeMae + ", nomePai=" + nomePai
-				+ ", dataMatricula=" + dataMatricula + ", nomeEscola=" + nomeEscola + ", serieMatriculado="
-				+ serieMatriculado + ", nota1=" + nota1 + ", nota2=" + nota2 + ", nota3=" + nota3 + ", nota4=" + nota4
-				+ "]";
-	}
+
+	
 
 	@Override
 	public int hashCode() {
