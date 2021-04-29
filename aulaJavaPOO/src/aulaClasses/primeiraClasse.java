@@ -1,6 +1,7 @@
 package aulaClasses;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -12,12 +13,24 @@ public class primeiraClasse {
 
 	@SuppressWarnings("rawtypes")
 	public static void main(String[] args) {
+		
+		
+		String login = JOptionPane.showInputDialog("Informe o login");
+		String senha = JOptionPane.showInputDialog("Informe a senha");
+		
+		if (login.equalsIgnoreCase("Gui") &&
+				senha.equalsIgnoreCase("Noah")) {
 
 		List<Aluno> alunos = new ArrayList<Aluno>();
+		
+		/*é uma lista que dentro dela tem uma chave que identifica uma sequencia de valores tambem */
+		HashMap<String, List<Aluno>> maps = new HashMap<String, List<Aluno>>();
 
-		List<Aluno> alunosAprovados = new ArrayList<Aluno>();
+		
+		/*listas Aprovado/Reprovado/Recuperação*/
+		/*List<Aluno> alunosAprovados = new ArrayList<Aluno>();
 		List<Aluno> alunosRecuperacao = new ArrayList<Aluno>();
-		List<Aluno> alunosReprovados = new ArrayList<Aluno>();
+		List<Aluno> alunosReprovados = new ArrayList<Aluno>();*/
 
 		for (int qtd = 1; qtd <= 5; qtd++) {
 
@@ -48,23 +61,24 @@ public class primeiraClasse {
 									 * aluno1.setRegistroGeral(rg); aluno1.setSerieMatriculado(matricula);
 									 * 
 									 * 
-									 /* para adicionar disciplinas*/
-									  
-									   for (int pos = 1; pos <= 1; pos++) { String
-									  
-									  nomeDisciplina = JOptionPane.showInputDialog("Nome da disciplina " + pos +
-									  " ?"); String notaDisciplina =
-									  JOptionPane.showInputDialog("Nota do disciplina " + pos + " ?");
-									 
-									  Disciplina disciplina = new Disciplina();
-									  disciplina.setDisciplina(nomeDisciplina);
-									  disciplina.setNota(Double.valueOf(notaDisciplina));
-									  
-									  aluno1.getDisciplinas().add(disciplina); 
-									  }
-									 
-									  /* para remover disciplinas*/
-									 
+									 * /* para adicionar disciplinas
+									 */
+
+			for (int pos = 1; pos <= 1; pos++) {
+				String
+
+				nomeDisciplina = JOptionPane.showInputDialog("Nome da disciplina " + pos + " ?");
+				String notaDisciplina = JOptionPane.showInputDialog("Nota do disciplina " + pos + " ?");
+
+				Disciplina disciplina = new Disciplina();
+				disciplina.setDisciplina(nomeDisciplina);
+				disciplina.setNota(Double.valueOf(notaDisciplina));
+
+				aluno1.getDisciplinas().add(disciplina);
+			}
+
+			/* para remover disciplinas */
+
 			int escolha = JOptionPane.showConfirmDialog(null, "Deseja remover alguma disciplina?");
 
 			if (escolha == 0) {
@@ -106,8 +120,9 @@ public class primeiraClasse {
 		 * /* imprime os alunos que sobraram
 		 */
 
-		/*
-		 * for (Aluno aluno1 : alunos) {
+		 /*
+		  for (Aluno aluno1 : alunos) {
+		 
 		 * System.out.println("Alunos que sobraram da lista");
 		 * System.out.println(aluno.getNome());
 		 * System.out.println("Suas materias são ");
@@ -148,37 +163,56 @@ public class primeiraClasse {
 		 * 
 		 * }
 		 */
-
 		
-		/*listas Aprovados/Recuperação/Reprovados*/
-		for (Aluno aluno : alunos) {/*listas estaticas*/
+		/*com Hash Maps*/
+		maps.put(StatusAluno.APROVADO, new ArrayList<Aluno>());
+		maps.put(StatusAluno.RECUPERACAO, new ArrayList<Aluno>());
+		maps.put(StatusAluno.REPROVADO, new ArrayList<Aluno>());
+		
+		
+		for (Aluno aluno : alunos) {/* listas estaticas */
 			if (aluno.getAlunoAprovado2().equalsIgnoreCase(StatusAluno.APROVADO)) {
+				maps.get(StatusAluno.APROVADO).add(aluno);
+			} else if (aluno.getAlunoAprovado2().equalsIgnoreCase(StatusAluno.RECUPERACAO)) {
+				maps.get(StatusAluno.RECUPERACAO).add(aluno);
+			} else {
+				maps.get(StatusAluno.REPROVADO).add(aluno);
+
+			}
+		}
+		
+		
+
+		/* listas Aprovados/Recuperação/Reprovados*/
+		/*for (Aluno aluno : alunos) {/* listas estaticas */
+			/*if (aluno.getAlunoAprovado2().equalsIgnoreCase(StatusAluno.APROVADO)) {
 				alunosAprovados.add(aluno);
 			} else if (aluno.getAlunoAprovado2().equalsIgnoreCase(StatusAluno.RECUPERACAO)) {
 				alunosRecuperacao.add(aluno);
 			} else {
 				alunosReprovados.add(aluno);
 			}
-		}
+		}*/
 		
+		
+
 		System.out.println("----------Lista dos aprovados----------");
-		for(Aluno aluno : alunosAprovados) {
+		for (Aluno aluno : maps.get(StatusAluno.APROVADO)) {
 			System.out.println("Resultado: " + aluno.getAlunoAprovado2() + " com média de: " + aluno.getMediaNota());
 		}
-		
+
 		System.out.println("----------Lista dos recuperação----------");
-		for(Aluno aluno : alunosRecuperacao) {
+		for (Aluno aluno : maps.get(StatusAluno.RECUPERACAO)) {
 			System.out.println("Resultado: " + aluno.getAlunoAprovado2() + " com média de: " + aluno.getMediaNota());
-		}	
-		
-		System.out.println("----------Lista dos reprovados----------");
-		for(Aluno aluno : alunosReprovados) {
-			System.out.println("Resultado: " + aluno.getAlunoAprovado2() + " com média de: " + aluno.getMediaNota());
-			
 		}
-		
-		
-		
+
+		System.out.println("----------Lista dos reprovados----------");
+		for (Aluno aluno : maps.get(StatusAluno.REPROVADO)) {
+			System.out.println("Resultado: " + aluno.getAlunoAprovado2() + " com média de: " + aluno.getMediaNota());
+
+		}
+
 	}
+}
 
 }
