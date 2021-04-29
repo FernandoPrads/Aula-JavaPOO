@@ -3,6 +3,8 @@ package aulaClasses;
 import java.util.ArrayList;
 import java.util.List;
 
+import cursojava.constantes.StatusAluno;
+
 public class Aluno {
 
 	/* Esses são os atributos do aluno */
@@ -129,21 +131,9 @@ public class Aluno {
 
 		return somaNotas / disciplinas.size();
 	}
-
-	public String getAlunoAprovado2() {
-		double media = this.getMediaNota();
-		if (media >= 50) {
-			if (media >= 70) {
-				return "Aluno está aprovado";
-			} else {
-				return "Aluno em recuperação";
-			}
-		} else {
-			return "Aluno está reprovado";
-		}
-	}
-
-	/* Método que retorna true(Aprovado) e false (Reprovado) */
+	
+	
+/* Método que retorna true(Aprovado) e false (Reprovado) */
 	public boolean getAlunoAprovado() {
 		double media = this.getMediaNota();
 		if (media >= 70) {
@@ -152,6 +142,22 @@ public class Aluno {
 			return false;/* reprovado */
 		}
 	}
+	
+	
+	public String getAlunoAprovado2() {
+		double media = this.getMediaNota();
+		if (media >= 50) {
+			if (media >= 70) {
+				return StatusAluno.APROVADO;
+			} else {
+				return StatusAluno.RECUPERACAO;
+			}
+		} else {
+			return StatusAluno.REPROVADO;
+		}
+	}
+
+	
 
 	@Override
 	public String toString() {
