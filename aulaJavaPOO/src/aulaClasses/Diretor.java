@@ -1,5 +1,6 @@
 package aulaClasses;
 
+/*Classe filha de Pessoa*/
 public class Diretor extends Pessoa {
 
 	private String registroEducação;
@@ -34,6 +35,22 @@ public class Diretor extends Pessoa {
 				+ ", nomePai=" + nomePai + "]";
 	}
 	
+	@Override
+		public boolean pessoaMaiorIdade() {
+			// TODO Auto-generated method stub
+			return super.pessoaMaiorIdade();
+		}
+	public String msgMaiorIdade() {
+		return this.pessoaMaiorIdade() ? "Obaa o diretor é maior de idade" : "Ixii vc é menor de idade";
+	}
+
+	
+	
+	@Override
+	public double salario() {
+		// TODO Auto-generated method stub
+		return 3900.78;
+	}
 	
 	
 	

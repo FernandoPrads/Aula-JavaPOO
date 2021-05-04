@@ -2,7 +2,7 @@ package aulaClasses;
 
 /*Classe pai ou superclasse*/
 
-public class Pessoa {
+public abstract class Pessoa {
 
 	protected String nome;
 	protected int idade;
@@ -12,7 +12,8 @@ public class Pessoa {
 	protected String nomeMae;
 	protected String nomePai;
 	
-	
+	/*Método abstratato que fica na classe pai é obrigatório para as classes filhas*/
+	public abstract double salario();
 	
 	public String getNome() {
 		return nome;
@@ -57,5 +58,8 @@ public class Pessoa {
 		this.nomePai = nomePai;
 	}
 	
-	
+	/*Retorna true se for igual ou maior que 18 */
+	public boolean pessoaMaiorIdade(){
+		return idade >= 18;
+	}
 }

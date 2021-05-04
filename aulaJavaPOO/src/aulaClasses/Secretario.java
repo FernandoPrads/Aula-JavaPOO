@@ -1,5 +1,6 @@
 package aulaClasses;
 
+/*Classe filha de Pessoa*/
 public class Secretario extends Pessoa {
 
 	private String registro;
@@ -34,6 +35,23 @@ public class Secretario extends Pessoa {
 		return "Secretario [registro=" + registro + ", nivelCargo=" + nivelCargo + ", experiencia=" + experiencia
 				+ ", nome=" + nome + ", idade=" + idade + ", dataNascimento=" + dataNascimento + ", registroGeral="
 				+ registroGeral + ", numeroCpf=" + numeroCpf + ", nomeMae=" + nomeMae + ", nomePai=" + nomePai + "]";
+	}
+	
+	@Override
+		public boolean pessoaMaiorIdade() {
+			// TODO Auto-generated method stub
+			return super.pessoaMaiorIdade();
+		}
+	
+	public String msgMaiorIdade() {
+		return this.pessoaMaiorIdade() ? "Obaa o secretario é maior de idade" : "Ixii vc é menor de idade";
+	}
+
+	
+	@Override
+	public double salario() {
+		// TODO Auto-generated method stub
+		return 1800.80 * 0.9;
 	}
 	
 	

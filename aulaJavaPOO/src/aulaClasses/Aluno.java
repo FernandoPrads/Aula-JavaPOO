@@ -1,5 +1,6 @@
 package aulaClasses;
 
+/*Classe filha de Pessoa*/
 import java.util.ArrayList;
 import java.util.List;
 
@@ -193,4 +194,18 @@ public class Aluno extends Pessoa {
 		return true;
 	}
 
+	@Override/*Identifica o método sobreescrito*/
+	public boolean pessoaMaiorIdade() {
+		return super.pessoaMaiorIdade();
+	}
+	
+	public String msgMaiorIdade() {
+		return this.pessoaMaiorIdade() ? "Obaa aluno é maior de idade" : "Ixii vc é menor de idade";
+	}
+
+	@Override
+	public double salario() {
+		// TODO Auto-generated method stub
+		return 1500.90;
+	}
 }
