@@ -37,9 +37,7 @@ public class TestandoClassesFilhas {
 		System.out.println("Salário do diretor é " + diretor.salario());
 		System.out.println("Salário do secretário é " + secretario.salario());
 		
-		Pessoa pessoa = new Aluno();
-		
-		pessoa = secretario;
+	
 	}
 
 }
