@@ -17,6 +17,8 @@ public class primeiraClasse {
 
 	@SuppressWarnings("rawtypes")
 	public static void main(String[] args) {
+		
+		try {
 
 		/* Login e Senha para liberar o programa */
 		String login = JOptionPane.showInputDialog("Informe o login");
@@ -41,7 +43,7 @@ public class primeiraClasse {
 			 * new ArrayList<Aluno>();
 			 */
 
-			for (int qtd = 1; qtd <= 5; qtd++) {
+			for (int qtd = 1; qtd <= 2; qtd++) {
 
 				/* new Aluno() é uma instancia (criação de Objetos) */
 				/* aluno1 é uma referencia para o objeto aluno */
@@ -220,6 +222,29 @@ public class primeiraClasse {
 		}else {
 			JOptionPane.showMessageDialog(null, "Acesso não permitido");
 		}
+		
+		} catch (Exception e) {
+			
+			StringBuilder saida = new StringBuilder();
+			
+			e.printStackTrace(); /*Imprime o erro no console Java*/
+			
+			/*Mensagem do erro ou causa*/
+			System.out.println("Mensagem: " + e.getMessage());
+			
+			for (int pos = 0; pos < e.getStackTrace().length; pos++) {
+				
+				saida.append("\n Classe de erro: " + e.getStackTrace()[pos].getClassName());
+				saida.append("\n Método de erro: " + e.getStackTrace()[pos].getMethodName());
+				saida.append("\n Linha de erro: " + e.getStackTrace()[pos].getLineNumber());
+				saida.append("\n Class: " + e.getClass().getName());
+			}
+			
+			
+			JOptionPane.showMessageDialog(null, "Erro em processar notas" + saida.toString());
+		}
 	}
-
 }
+	
+
+
