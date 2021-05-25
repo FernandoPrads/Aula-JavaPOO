@@ -38,9 +38,9 @@ public class primeiraClasse {
 			String login = JOptionPane.showInputDialog("Informe o login");
 			String senha = JOptionPane.showInputDialog("Informe a senha");
 
-			if (new FuncaoAutenticacao(new Secretario(login, senha))
-					.autenticar()) { /* se true acessa, se false não acessa */
+			if (new FuncaoAutenticacao(new Secretario(login, senha)).autenticar()) { /* se true acessa, se false não acessa */
 
+					
 				List<Aluno> alunos = new ArrayList<Aluno>();
 
 				/*
