@@ -1,6 +1,7 @@
 package cursojava.thread;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -9,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -19,53 +21,18 @@ import javax.swing.JTextField;
 public class TelaTimeThread extends JDialog {
 	
 	private JPanel jPanel = new JPanel(new GridBagLayout()); /*Painel de componentes*/
-	
-	private JLabel descricaoHora = new JLabel("Time Thread 1");
+		
+	private JLabel descricaoHora = new JLabel("Nome");
 	private JTextField mostraTempo = new JTextField();
 	
-	private JLabel descricaoHora2 = new JLabel("Time Thread 2");
+	private JLabel descricaoHora2 = new JLabel("E-mail");
 	private JTextField mostraTempo2 = new JTextField();
 	
-	private JButton jButton = new JButton("Start");
+	private JButton jButton = new JButton("Add Lista");
 	private JButton jButton2 = new JButton("Stop");
 	
-	private Runnable thread1 =  new Runnable() {
-		
-		@Override
-		public void run() {
-			while (true) { /*fica sempre rodando*/
-				mostraTempo.setText(new SimpleDateFormat("dd/MM/yyy hh:mm.ss").
-						format(Calendar.getInstance().getTime()));
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-			
-		}
-	};
-	
-private Runnable thread2 =  new Runnable() {
-		
-		@Override
-		public void run() {
-			while (true) { /*fica sempre rodando*/
-				mostraTempo2.setText(new SimpleDateFormat("dd-MM-yyy hh:mm:ss").
-						format(Calendar.getInstance().getTime()));
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-			
-		}
-	};
-	
-	private Thread thread1Time;
-	private Thread thread2Time;
-	
+
+	private ImplementacaoFilaThread fila = new ImplementacaoFilaThread();
 	
 	public TelaTimeThread() {/*executa o que estiver dentro da abertura ou execução*/
 		setTitle("Minha tela de time com Thread");
@@ -86,7 +53,6 @@ private Runnable thread2 =  new Runnable() {
 		
 		mostraTempo.setPreferredSize(new Dimension(200, 25));
 		gridBagConstraints.gridy ++;
-		mostraTempo.setEditable(false);
 		jPanel.add(mostraTempo, gridBagConstraints);
 		
 		descricaoHora2.setPreferredSize(new Dimension(200,25));
@@ -95,7 +61,6 @@ private Runnable thread2 =  new Runnable() {
 		
 		mostraTempo2.setPreferredSize(new Dimension(200, 25));
 		gridBagConstraints.gridy ++;
-		mostraTempo2.setEditable(false);
 		jPanel.add(mostraTempo2, gridBagConstraints);
 		
 		gridBagConstraints.gridwidth = 1;
@@ -111,17 +76,27 @@ private Runnable thread2 =  new Runnable() {
 		
 		jButton.addActionListener(new ActionListener() {
 			
+		
 			@Override
 			public void actionPerformed(ActionEvent e) { /*Executa o clique do botão*/
 				
-				thread1Time = new Thread(thread1);
-				thread1Time.start();
+				if (fila == null) {
+					fila = new ImplementacaoFilaThread();
+					fila.start();
+					
+				}
 				
-				thread2Time = new Thread(thread2);
-				thread2Time.start();
-						
-				jButton.setEnabled(false);
-				jButton2.setEnabled(true);
+				for (int qtd = 0; qtd < 100; qtd++) { /*simulando envios em massa*/
+					
+				
+				ObjetoFilaThread filaThread = new ObjetoFilaThread();
+				filaThread.setNome(mostraTempo.getText());
+				filaThread.setEmail(mostraTempo2.getText() + "-" + qtd);
+				
+				fila.add(filaThread);
+				
+				
+				}
 				
 			}
 		});
@@ -130,17 +105,16 @@ private Runnable thread2 =  new Runnable() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				thread1Time.stop();
-				thread2Time.stop();
 				
-				jButton.setEnabled(true);
-				jButton2.setEnabled(false);
+				fila.stop();
+				fila = null;
 			}
 		});
 		
-		jButton2.setEnabled(false);
 		
-			
+		
+		
+		fila.start();
 		add(jPanel, BorderLayout.WEST);
 		/*sempre será o ultimo comando*/
 		setVisible(true);/*Torna a tela visivel para o usuario*/
