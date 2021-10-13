@@ -74,6 +74,7 @@ public class TelaTimeThread extends JDialog {
 		jPanel.add(jButton2, gridBagConstraints);
 		
 		
+		
 		jButton.addActionListener(new ActionListener() {
 			
 		
@@ -86,7 +87,7 @@ public class TelaTimeThread extends JDialog {
 					
 				}
 				
-				for (int qtd = 0; qtd < 100; qtd++) { /*simulando envios em massa*/
+				for (int qtd = 0; qtd < 20; qtd++) { /*simulando envios em massa*/
 					
 				
 				ObjetoFilaThread filaThread = new ObjetoFilaThread();
@@ -100,6 +101,8 @@ public class TelaTimeThread extends JDialog {
 				
 			}
 		});
+		
+		
 		
 		jButton2.addActionListener(new ActionListener() {
 			
